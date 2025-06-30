@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coded In Pastels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="heart-container">
+      <span class="heart"></span>
+      <span class="heart"></span>
+      <span class="heart"></span>
+    </div>
+    <nav class="navbar footer-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+      <a href="#mood">Mood</a>
+      <a href="#vision">Vision</a>
+    </nav>
+  </header>
+
+  <section id="home" class="container">
+    <div class="section">
+      <img src="home.jpeg" alt="home" />
+      <div class="nav right">HOME</div>
+    </div>
+    <div class="section">
+      <img src="blog.jpeg" alt="blog" />
+      <div class="nav right">BLOG</div>
+    </div>
+    <div class="section">
+      <img src="about.jpeg" alt="about" />
+      <div class="nav right">ABOUT</div>
+    </div>
+    <div class="title">Coded In Pastels</div>
+  </section>
+
+  <section id="about" class="oval-section">
+    <div class="oval-header">
+      <span class="left">ABOUT</span>
+      <hr class="line" />
+      <span class="right">ME</span>
+    </div>
+    <div class="oval-container">
+      <div class="oval"><img src="background1.jpeg" alt="oval1" /></div>
+      <div class="oval"><img src="background1.jpeg" alt="oval2" /></div>
+      <div class="oval"><img src="background1.jpeg" alt="oval3" /></div>
+      <div class="oval"><img src="background1.jpeg" alt="oval4" /></div>
+      <div class="oval"><img src="background1.jpeg" alt="oval5" /></div>
+    </div>
+    <hr class="bottom-line" />
+  </section>
+
+  <section id="blog" class="blog-mosaic">
+    <div class="blog-mosaic-text">
+      <div class="blog-card side-blog">
+        <img src="blog1.jpeg" alt="side left" />
+        <a href="#" class="blog-link">Read Blog</a>
+      </div>
+      <h1>My Blogs <span>2025</span></h1>
+      <div class="blog-card side-blog">
+        <img src="blog1.jpeg" alt="side right" />
+        <a href="#" class="blog-link">Read Blog</a>
+      </div>
+    </div>
+    <div class="blog-mosaic-grid sr-fade">
+      <div class="blog-card"><img src="blog1.jpeg" alt="blog1" /><a href="#" class="blog-link">Read Blog</a></div>
+      <div class="blog-card"><img src="blog1.jpeg" alt="blog2" /><a href="#" class="blog-link">Read Blog</a></div>
+      <div class="blog-card"><img src="blog1.jpeg" alt="blog3" /><a href="#" class="blog-link">Read Blog</a></div>
+      <div class="blog-card"><img src="blog1.jpeg" alt="blog4" /><a href="#" class="blog-link">Read Blog</a></div>
+    </div>
+  </section>
+
+  <section id="mood" class="inspiration-image-section">
+    <img src="mood.png" alt="Inspiration Board Screenshot" />
+  </section>
+
+  <section id="vision" class="vision-image-section">
+    <img src="vision.png" alt="Vision Section" />
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Coded In Pastels. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    ScrollReveal().reveal('.sr-fade', {
+      duration: 1500,
+      origin: 'bottom',
+      distance: '50px',
+      easing: 'ease-in-out',
+      reset: false
+    });
+
+    // highlight active link on scroll
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar a, .footer-nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // enhanced smooth scroll
+    navLinks.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").slice(1);
+        const targetSection = document.getElementById(targetId);
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
